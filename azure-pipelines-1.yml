@@ -1,0 +1,21 @@
+https://dev.azure.com/asya89kg/PASV-Asylgul/_build/results?buildId=1&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9&t=9c939e41-62c2-5605-5e05-fc3554afc9f5&l=66# Node.js
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install and build'
